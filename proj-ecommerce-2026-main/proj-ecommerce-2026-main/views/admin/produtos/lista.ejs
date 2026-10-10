@@ -1,0 +1,31 @@
+
+<% produtos.forEach(produto => { %>
+    <tr>
+        <td><%= produto.id %></td>
+        <td><%= produto.nome %></td>
+        <td><%= produto.categoria || '-' %></td>
+        <td>R$ <%= Number(produto.valor || 0).toFixed(2).replace('.', ',') %></td>
+        <td><%= produto.estoque %></td>
+        <td>
+            <% if (produto.imagem) { %>
+                <img
+                    src="/uploads/<%= produto.imagem %>"
+                    alt="<%= produto.nome %>"
+                    style="width: 60px; height: 60px; object-fit: cover;"
+                >
+            <% } else { %>
+                Sem imagem
+            <% } %>
+        </td>
+        <td>
+            <button class="btn btn-warning btn-sm" disabled>
+                <i class="bi bi-pencil"></i>
+                Editar
+            </button>
+            <button class="btn btn-danger btn-sm" disabled>
+                <i class="bi bi-trash"></i>
+                Excluir
+            </button>
+        </td>
+    </tr>
+<% }) %>
